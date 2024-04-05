@@ -123,14 +123,12 @@ bot.connect(
 bot.onMessage(async (channel, user, message, self) => {
     if (self) return;
 
-    if (ENABLE_CHANNEL_POINTS) {
-        console.log(`The message id is ${user["msg-id"]}`);
-        if (user["msg-id"] === "highlighted-message") {
-            console.log(`The message is ${message}`);
-            const response = await openai_ops.make_openai_call(message);
-            bot.say(channel, response);
-        }
-    }
+    if (ENABLE_CHANNEL_POINTS && user["msg-id"] === "highlighted-message") {
+    console.log(`The message id is ${user["msg-id"]}`);
+    console.log(`The message is ${message}`);
+    const response = await openai_ops.make_openai_call(message);
+    bot.say(channel, response);
+}
     // check if message is a command started with !COMMAND_NAME (e.g. !gpt) in lower-cased
     if (message.toLowerCase().startsWith(COMMAND_NAME)) {
         let text = message.slice(COMMAND_NAME.length);
