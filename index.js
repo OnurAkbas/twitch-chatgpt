@@ -190,7 +190,7 @@ app.all('/', (req, res) => {
     console.log("Just got a request!")
     res.render('pages/index');
     //res.sendFile(process.env.RENDER_SRC_ROOT + '/index.ejs')
-    //res.send('Yo!')
+    res.send('Yo!')
 })
 
 if (process.env.GPT_MODE === "CHAT"){
