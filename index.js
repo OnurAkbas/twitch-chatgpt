@@ -126,13 +126,15 @@ bot.onMessage(async (channel, user, message, self) => {
     if (self) return;
 
     if (message.toLowerCase() === TESTING_COMMAND) {
-        // Send a test message to ChatGPT
-        const testMessage = "This is a test message for ChatGPT.";
+    const testMessage = "This is a test message for ChatGPT.";
+    try {
         const response = await openai_ops.make_openai_call(testMessage);
-
-        // Send the response back to the Twitch chat
         bot.say(channel, `Response from ChatGPT: ${response}`);
+    } catch (error) {
+        console.error("Error from ChatGPT:", error);
+        bot.say(channel, "Sorry, something went wrong with ChatGPT. Please try again later.");
     }
+}
 
     // check if message is a command started with !COMMAND_NAME (e.g. !gpt) in lower-cased
     if (message.toLowerCase().startsWith(COMMAND_NAME)) {
