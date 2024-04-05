@@ -123,6 +123,11 @@ bot.connect(
 bot.onMessage(async (channel, user, message, self) => {
     if (self) return;
 
+    bot.onMessage(async (channel, user, message, self) => {
+    console.log("Received message:", { channel, user, message, self });
+    // Rest of your message handling code...
+});
+
     if (ENABLE_CHANNEL_POINTS && user["msg-id"] === "highlighted-message") {
     console.log(`The message id is ${user["msg-id"]}`);
     console.log(`The message is ${message}`);
