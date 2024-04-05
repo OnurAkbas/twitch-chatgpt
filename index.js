@@ -124,8 +124,8 @@ bot.onMessage(async (channel, user, message, self) => {
     if (self) return;
 
     bot.onMessage(async (channel, user, message, self) => {
-    console.log("Received message:", {user, message});
-    // Rest of your message handling code...
+    console.log(`The message sent by ${user["display-name"]}`);
+    console.log(`The message is ${message}`);
     });
 
     // check if message is a command started with !COMMAND_NAME (e.g. !gpt) in lower-cased
